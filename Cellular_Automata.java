@@ -2,22 +2,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-// (IMPORTANT: Update The Text File's Directory To a Directory In Your PC) in Line 30
+// (The Text File's Directory must be updated) Line 30
 
 public class Cellular_Automata {
-//PUT THE RULE NUMBER YOU WANT TO SEE HERE
-	static int Rule = 110;				//Put Any Of The 256 Rules Here, I'm Using Rule 110 For Demonstration	
-	static int Size = 10;  				//You Can Update The Size Of The Cellular Automata Here
-	static int ITERS = 1000;			//You Can Update The Number Of Times The Cells Will Be Updated
+	static int Rule = 110;				//The rule goes here, I'm Using Rule 110 For Demonstration	
+	static int Size = 10;  				//The size of the first row
+	static int ITERS = 1000;			//Number Of Times The Cells Will Be Updated
 	
 	static int[] Rule_Array = new int[8];
 
 	public static void main(String[] args) {
 		
 		String Rule_Binary = Integer.toBinaryString(Rule);	//Convert Rule From Decimal To Binary
-		int RBL = Rule_Binary.length();						//Binary String's Length
+		int RBL = Rule_Binary.length();						//Lengths of the Binary String
 		int counter = 0;
-	//This Part Stores The Binary String Inside the Rule_Array Array
+	//This Part Stores The Binary String Inside of the Rule_Array Array
 		for(int i = RBL-1 ; i >= 0-(8-RBL) ; i --){
 			if(i >= 0){
 			Rule_Array[7-counter] = Rule_Binary.charAt(i)-'0';
@@ -27,9 +26,9 @@ public class Cellular_Automata {
 			counter++;
 		}
 		
-	//This Portion Takes Your Console Output And Puts It In A TextFile So That You Can View The Cellular Automata Later
+	//This Portion Takes The Console Output And Puts It In A TextFile
 		try{
-		PrintStream myconsole = new PrintStream(new File("A://CellularAutomata.txt")); //Put The Directory Where You Want The Text File To Be Saved
+		PrintStream myconsole = new PrintStream(new File("A://CellularAutomata.txt")); //The Directory Where The Text File Is Saved
 		System.setOut(myconsole);
 		}catch(FileNotFoundException fx){
 		}
@@ -53,7 +52,7 @@ public class Cellular_Automata {
 		}
 		System.out.println("");
 		
-	//MAIN UPDATING LOOP THAT USES THE UPDATE METHOD BELOW
+	//MAIN UPDATING LOOP THAT USES THE UPDATE METHOD
 		for (int i = 0; i < ITERS; i++) {
 
 	// UPDATING LEFT EDGE AKA THE FIRST CELL
